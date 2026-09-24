@@ -1,0 +1,14 @@
+#panel-container {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: var(--gap-small);
+  width: 25em;
+  padding: var(--gap);
+  box-sizing: border-box;
+}
+
+.panel {
+  height: 100px;
+  background-color: var(--bg-main);
+}

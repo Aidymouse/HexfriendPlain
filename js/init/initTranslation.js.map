@@ -1,0 +1,1 @@
+{"version":3,"file":"initTranslation.js","sourceRoot":"","sources":["../../ts/init/initTranslation.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,EAAE,MAAM,0BAA0B,CAAA;AAEhD,MAAM,YAAY,GAAG;IACnB,OAAO,EAAE,KAAK;CACf,CAAA;AAED,MAAM,CAAC,MAAM,eAAe,GAAG,GAAG,EAAE;IAClC,UAAU,CAAC,EAAE,GAAG,YAAY,CAAC,KAAK,CAAA;AACpC,CAAC,CAAA"}
