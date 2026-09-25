@@ -2,7 +2,7 @@ import { defaultTileset } from './defaultTileset.js';
 export class TextureStore {
 
     // TODO: how do i get BitmapImage
-    /** @type Object.<string, BitmapImage> */
+    /** @type Object.<string, ImageBitmap> */
     textures = {};
 
     constructor() {

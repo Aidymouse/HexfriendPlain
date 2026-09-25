@@ -15,12 +15,12 @@ export type IconBase = {
 };
 
 export type RelativeIcon = IconBase & {
-          scaleMode: ScaleMode.RELATIVE;
+          scaleMode: typeof ScaleMode.RELATIVE;
           pHex: number; // percent of total hex taken up, where 1 = 100% of hexes shortest dimension
 };
 
 export type ByDimensionIcon = IconBase & {
-          scaleMode: ScaleMode.BYDIMENSION;
+          scaleMode: typeof ScaleMode.BYDIMENSION;
           pWidth: number;
           pHeight: number;
 };

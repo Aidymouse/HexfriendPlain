@@ -1,4 +1,7 @@
+import { ScaleMode } from "../types/enums.js";
 import { drawHex } from "./hexDrawing.js";
+import { scaleImageToRect } from "./imageSizing.js";
+import { tintImage } from './imageFns.js'
 
 /** @import {Icon, WorldCoord, HexSizeParams, Tile } from '../types/index' */
 
@@ -25,8 +28,14 @@ export class HexDrawer {
         this.ctx.fill();
         if (tile.symbol) {
             const tex = globalThis.textureStore.getTexture(tile.id);
+
             if (tex) {
-                this.ctx.drawImage(tex, pos.x - tex.width / 2, pos.y - tex.height / 2);
+                const texScale = scaleImageToRect(tex.width, tex.height, size.width, size.height, { scaleMode: ScaleMode.RELATIVE, proportion: 0.8 })
+                const texWidth = tex.width * texScale.x
+                const texHeight = tex.height * texScale.y
+                const tintedTex = tintImage(tex, `#${tile.symbol.color.toString(16)}`)
+                this.ctx.drawImage(tintedTex, pos.x - texWidth / 2, pos.y - texHeight / 2, texWidth, texHeight);
+                this.ctx.restore()
             }
         }
     }
