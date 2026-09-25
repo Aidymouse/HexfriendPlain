@@ -1,4 +1,3 @@
-// Implementation of hexTypes/HexOrientation
 
 /** Orientation of the hex
 *  ___       /\
@@ -7,6 +6,7 @@
 *
 * Flat     Pointy
 *  Top      Top
+* @readonly
 * @enum { string } */
 export const HexOrientation = {
     FLATTOP: "flatTop",
@@ -14,6 +14,7 @@ export const HexOrientation = {
 }
 
 /** For square grids
+ * @readonly
  * @enum {string} */
 export const HexRaised = {
     EVEN: 'even',
@@ -21,10 +22,12 @@ export const HexRaised = {
 }
 
 /** For scaling images, mostly icons
- * @enum {typeof ScaleMode[keyof typeof ScaleMode]} */
-export const ScaleMode = /** @type {const} */ ({
+ * @readonly
+ * @enum { string } 
+ */
+export const ScaleMode = {
     RELATIVE: 'relative',
     BYDIMENSION: 'bydimension',
-})
+}
 
 

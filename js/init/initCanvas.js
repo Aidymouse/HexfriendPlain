@@ -4,10 +4,13 @@ import { defaultTileset } from "./defaultTileset.js";
 import { HexOrientation } from '../types/enums.js'
 
 export const initCanvas = () => {
-    globalThis.ctx = document.getElementById('main-canvas').getContext('2d');
+    globalThis.ctx = /** @type {HTMLCanvasElement} */(document.getElementById('main-canvas')).getContext('2d');
+
     fitCanvasToWindow();
+
     window.addEventListener('resize', fitCanvasToWindow);
 
+    // DEBUG
     const hs = new HexDrawer(globalThis.ctx);
 
     for (const [idx, tile] of defaultTileset.tiles.entries()) {
@@ -18,9 +21,17 @@ export const initCanvas = () => {
 };
 const fitCanvasToWindow = () => {
     const { width, height } = document.getElementById('full-size').getBoundingClientRect();
+    // TODO: could consider throttling resize events
+    // https://bencentra.com/code/2015/02/27/optimizing-window-resize.html
+    const d = ctx.getImageData(0, 0, width, height)
+
     document.getElementById('main-canvas').setAttribute('width', `${width}`);
     document.getElementById('main-canvas').setAttribute('height', `${height}`);
+
+    ctx.putImageData(d, 0, 0)
 };
+
+/** @param {number} size */
 const drawCheckerboard = (size) => {
     globalThis.ctx.clearRect(0, 0, 100000, 100000);
     const { width, height } = document.getElementById('main-canvas').getBoundingClientRect();
