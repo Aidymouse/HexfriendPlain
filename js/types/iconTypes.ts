@@ -1,4 +1,4 @@
-import { ScaleMode } from "./imageTypes";
+import { type ScaleMode } from "./enums";
 
 export type IconBase = {
           display: string;

@@ -12,7 +12,6 @@ export * from "./tileTypes";
 export * from "./hexTypes";
 export * from "./iconTypes";
 export * from "./translationTypes";
-export * from "./imageTypes";
 export * from "./coordTypes";
 
 /** NOTE: watch for sneaky enums.js file, it's not typescript! */

@@ -1,6 +1,6 @@
 import { drawHex } from "./hexDrawing.js";
 
-/** @import {Icon, WorldCoord, HexSizeParams, Tile} from '../types/index' */
+/** @import {Icon, WorldCoord, HexSizeParams, Tile } from '../types/index' */
 
 export class HexDrawer {
     // @type {CanvasRenderingContext2D}
@@ -34,4 +34,4 @@ export class HexDrawer {
     drawHexagon() {
     }
 }
-//# sourceMappingURL=HexDrawer.js.map
+

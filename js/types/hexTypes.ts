@@ -1,39 +1,11 @@
-// export enum HexOrientation {
-//   FLATTOP = 'flatTop',
-//   POINTYTOP = 'pointyTop',
-// }
-//
-// export enum HexRaised {
-//   EVEN = 'even',
-//   ODD = 'odd',
-// }
-
-import { HexOrientation as JSHO } from "./enums.js";
-
-export enum HexOrientation {
-          FLATTOP = "flatTop",
-          POINTYTOP = "pointyTop",
-}
-
-export enum HexRaised {
-          EVEN = "even",
-          ODD = "odd",
-}
+import { HexOrientation, HexRaised } from "./enums.js";
 
 export type HexSizeParams = {
           /** Width of the hex **/
           width: number;
           /** Height of the hex **/
           height: number;
-          /** Orientation of the hex
-           *  ___       /\
-           * /   \  or | |
-           * \___/     \/
-           *
-           * Flat     Pointy
-           *  Top      Top
-           *
-           * **/
+          /** Orientation of the hex */
           orientation: HexOrientation;
           /* If you're thinking about your hex in a grid and want gaps between hexes, provide it here */
           gap?: number;
