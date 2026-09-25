@@ -31,3 +31,10 @@ export const ScaleMode = {
 }
 
 
+/** @enum {string} */
+export const CoordinateSystem = {
+    CUBE: 'cube',
+    ROWCOL: 'rowcol',
+    AXIAL: 'axial',
+    LETTERNUMBER: 'letternumber'
+}

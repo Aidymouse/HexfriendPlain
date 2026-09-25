@@ -1,0 +1,5 @@
+const initSaveData = () => {
+}
+
+const initMapState = () => {
+}
