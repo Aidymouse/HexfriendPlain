@@ -1,4 +1,4 @@
-import { HexOrientation, HexRaised } from "./enums";
+import { CoordinateSystem, HexOrientation, HexRaised } from "./enums";
 import { HexGridParams } from "./hexTypes";
 import { Tile, Tileset } from "./tileTypes";
 
@@ -34,7 +34,7 @@ export type HexConfig = {
 export type CoordinatesConfig = {
           shown: boolean;
           style: { fill: string; stroke: string; strokeThickness: number };
-          system: CoordinatesConfig;
+          system: CoordinateSystem;
           seperator: string;
           gap: number;
           offsets: {
@@ -47,12 +47,12 @@ export type CoordinatesConfig = {
 export type MapState = {
           // Config
           shape: MapShapeConfig;
-          hexes: HexConfig;
+          hexes: HexGridParams & { blankColor: string };
           largeHexes: LargeHexesConfig;
           grid: HexGridConfig;
           coordinates: CoordinatesConfig;
 
           // Tiles
-          tiles: { [hexId: string]: Tile };
+          tiles: { [hexId: string]: {q: number, r: number, tile: Tile | null} };
           loadedTilesets: Tileset[];
 };

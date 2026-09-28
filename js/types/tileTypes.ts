@@ -1,4 +1,4 @@
-import { HexOrientation } from "./hexTypes.js";
+import { HexOrientation } from "./enums.js";
 import { Icon } from "./iconTypes.js";
 
 export type Tile = {
@@ -20,6 +20,6 @@ export type Tileset = {
 	collapsed: boolean; // This needs to go in a list of collapsed IDs in the save data somewhere, not in the tileset itself !
 	tiles: Tile[];
 	format_version: number; // Internal ID of tileset format. 
-	supported_orientations: HexOrientation.FLATTOP | HexOrientation.POINTYTOP | 'both'
+	supported_orientations: typeof HexOrientation.FLATTOP | typeof HexOrientation.POINTYTOP | 'both'
 	//tileset_type: TilesetType
 }
