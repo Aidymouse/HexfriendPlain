@@ -47,9 +47,13 @@ export const initMapState = () => {
 
   // TEMP: Create a ring of hexes
   // TODO: refactor this into default save data and do a load save data
-  for (let q = 0; q < 7; q++) {
-    for (let r = 0; r < 7; r++) {
-      globalThis.mapState.tiles[`${q}:${r}:${-q - r}`] = { q, r, tile: null };
+  const hexesOut = 7;
+  for (let q = -hexesOut; q <= hexesOut; q++) {
+    for (let r = -hexesOut; r <= hexesOut; r++) {
+      const s = -q - r;
+      if (q + r <= hexesOut && q + r >= -hexesOut) {
+        globalThis.mapState.tiles[`${q}:${r}`] = { q, r, tile: null };
+      }
     }
   }
 };
