@@ -11,6 +11,8 @@ import { loadTileset } from "./lib/tilesets.js";
 // Called when the page has finished loading
 export const initHexfriend = async () => {
   initCanvas();
+  // App State
+
   initMapState();
   // TODO: load save data here
   initTranslation();

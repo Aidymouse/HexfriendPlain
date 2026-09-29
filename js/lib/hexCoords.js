@@ -1,9 +1,13 @@
-/** @import { CubeCoord, AxialCoord, HexSizeParams } from '../types' **/
+/** @import { CubeCoord, AxialCoord, WorldCoord, HexSizeParams } from '../types' **/
+
+import { HexOrientation } from "../types/enums.js";
+import { getTranslation } from "./canvasFns.js";
 
 export const HexCoords = {
   /**
    * @param {CubeCoord} c
    * @param {HexSizeParams} size
+   * @returns {WorldCoord}
    */
   cubeToWorld: (c, size) => {
     const hexWidth = size.width + (size.gap ?? 0);
@@ -37,8 +41,76 @@ export const HexCoords = {
   /**
    * @param {AxialCoord} a
    * @param {HexSizeParams} size
+   * @returns {WorldCoord}
    */
   axialToWorld: (a, size) => {
     return HexCoords.cubeToWorld(HexCoords.axialToCube(a), size);
+  },
+
+  /** @param p {WorldCoord}
+   * @returns {WorldCoord}
+   * */
+  screenToWorld: (p) => {
+    const t = getTranslation();
+    return { x: p.x - t.x, y: p.y - t.y };
+  },
+
+  /** @param {WorldCoord} w
+   * @param {HexSizeParams} size
+   * @param {boolean} [round=true]
+   * @returns {CubeCoord}
+   */
+  worldToCube: (w, size, round = true) => {
+    const hexWidth = size.width + (size.gap ?? 0);
+    const hexHeight = size.height + (size.gap ?? 0);
+
+    let q = w.x / (hexWidth * 0.75);
+    let r = ((2 * w.y) / hexHeight - q) / 2;
+
+    if (size.orientation === HexOrientation.POINTYTOP) {
+      r = w.y / (hexHeight * 0.75);
+      q = ((2 * w.x) / hexWidth - r) / 2;
+    }
+    let s = -q - r;
+
+    if (round) {
+      return HexCoords.cubeRound({ q, r, s });
+    }
+
+    return { q, r, s };
+  },
+
+  /** Rounds a cube (or axial) coord to the nearest whole coord
+   * @param {CubeCoord} frac
+   * @returns { CubeCoord }
+   */
+  cubeRound: (frac) => {
+    let q = Math.round(frac.q);
+    let r = Math.round(frac.r);
+    let s = Math.round(frac.s);
+
+    let q_diff = Math.abs(q - frac.q);
+    let r_diff = Math.abs(r - frac.r);
+    let s_diff = Math.abs(s - frac.s);
+
+    if (q_diff > r_diff && q_diff > s_diff) {
+      q = -r - s;
+    } else if (r_diff > s_diff) {
+      r = -q - s;
+    } else {
+      s = -q - r;
+    }
+
+    if (q === -0) {
+      q = 0;
+    }
+    if (r === -0) {
+      r = 0;
+    }
+    if (s === -0) {
+      s = 0;
+    }
+
+    return { q: q, r: r, s: s };
   },
 };

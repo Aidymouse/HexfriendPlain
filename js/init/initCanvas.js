@@ -2,6 +2,7 @@ import { HexDrawer } from "../lib/HexDrawer.js";
 //import { HexOrientation } from "../types/index.js";
 import { defaultTileset } from "./defaultTileset.js";
 import { HexOrientation } from "../types/enums.js";
+import { canvasPointerDown, canvasPointerMove } from "../events/index.js";
 
 export const initCanvas = () => {
   globalThis.ctx = /** @type {HTMLCanvasElement} */ (
@@ -17,13 +18,12 @@ export const initCanvas = () => {
   globalThis.ctx.translate(width / 2, height / 2);
 
   window.addEventListener("resize", fitCanvasToWindow);
-  document.getElementById("main-canvas").addEventListener("pointermove", move);
-};
-
-/** @param {PointerEvent} e
- * */
-const move = (e) => {
-  console.log("Left mouse down?", e.buttons & (1 << 0));
+  document
+    .getElementById("main-canvas")
+    .addEventListener("pointermove", canvasPointerMove);
+  document
+    .getElementById("main-canvas")
+    .addEventListener("pointerdown", canvasPointerDown);
 };
 
 const fitCanvasToWindow = () => {

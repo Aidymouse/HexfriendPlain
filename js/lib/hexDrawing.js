@@ -24,11 +24,11 @@ export const drawHex = (ctx, pos, size) => {
 export const drawPolygon = (points) => {
   const ctx = globalThis.ctx;
   ctx.beginPath();
-  ctx.moveTo(points[0], points[1]);
+  ctx.moveTo(Math.floor(points[0]), Math.floor(points[1]));
   for (let i = 2; i < points.length; i += 2) {
-    ctx.lineTo(points[i], points[i + 1]);
+    ctx.lineTo(Math.floor(points[i]), Math.floor(points[i + 1]));
   }
-  ctx.lineTo(points[0], points[1]);
+  ctx.lineTo(Math.floor(points[0]), Math.floor(points[1]));
   ctx.closePath();
 };
 

@@ -1,4 +1,4 @@
-import { CoordinateSystem, HexOrientation, HexRaised } from "./enums";
+import { CoordinateSystem, HexOrientation, HexRaised, Tool } from "./enums";
 import { HexGridParams } from "./hexTypes";
 import { Tile, Tileset } from "./tileTypes";
 
@@ -55,4 +55,9 @@ export type MapState = {
           // Tiles
           tiles: { [hexId: string]: {q: number, r: number, tile: Tile | null} };
           loadedTilesets: Tileset[];
+};
+
+
+export type AppState = {
+  tool: typeof Tool
 };
