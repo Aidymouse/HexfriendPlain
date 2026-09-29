@@ -1,9 +1,36 @@
-import { CoordinateSystem, HexOrientation, HexRaised } from "../types/enums.js";
+import {
+  CoordinateSystem,
+  HexOrientation,
+  HexRaised,
+  Tool,
+} from "../types/enums.js";
+
+/** @import {MapState} from '../types' */
 
 const initSaveData = () => {};
 
-export const initMapState = () => {
-  globalThis.mapState = {
+export const initAppState = () => {
+  globalThis.appState = {
+    tool: Tool.TERRAIN,
+    map: getInitMapState(),
+  };
+
+  // TEMP: Create a ring of hexes
+  // TODO: refactor this into default save data and do a load save data
+  const hexesOut = 7;
+  for (let q = -hexesOut; q <= hexesOut; q++) {
+    for (let r = -hexesOut; r <= hexesOut; r++) {
+      const s = -q - r;
+      if (q + r <= hexesOut && q + r >= -hexesOut) {
+        globalThis.appState.map.tiles[`${q}:${r}`] = { q, r, tile: null };
+      }
+    }
+  }
+};
+
+/** @returns {MapState} */
+const getInitMapState = () => {
+  return {
     shape: {
       mapShape: "flower",
       hexesOut: 7,
@@ -44,16 +71,4 @@ export const initMapState = () => {
     tiles: {},
     loadedTilesets: [],
   };
-
-  // TEMP: Create a ring of hexes
-  // TODO: refactor this into default save data and do a load save data
-  const hexesOut = 7;
-  for (let q = -hexesOut; q <= hexesOut; q++) {
-    for (let r = -hexesOut; r <= hexesOut; r++) {
-      const s = -q - r;
-      if (q + r <= hexesOut && q + r >= -hexesOut) {
-        globalThis.mapState.tiles[`${q}:${r}`] = { q, r, tile: null };
-      }
-    }
-  }
 };

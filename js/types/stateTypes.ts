@@ -59,5 +59,6 @@ export type MapState = {
 
 
 export type AppState = {
-  tool: typeof Tool
+  tool: string
+  map: MapState
 };

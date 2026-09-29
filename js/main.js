@@ -3,7 +3,7 @@ import {
   initDrawing,
   initTextureStore,
   initTranslation,
-  initMapState,
+  initAppState,
   initCanvas,
 } from "./init/index.js";
 import { loadTileset } from "./lib/tilesets.js";
@@ -13,12 +13,12 @@ export const initHexfriend = async () => {
   initCanvas();
   // App State
 
-  initMapState();
+  initAppState();
   // TODO: load save data here
   initTranslation();
   initTextureStore();
   await loadTileset(defaultTileset);
   initDrawing();
   // TODO: draw from save data
-  globalThis.hexDrawer.paintTiles(globalThis.mapState.tiles);
+  globalThis.hexDrawer.paintTiles(globalThis.appState.map.tiles);
 };

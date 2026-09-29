@@ -113,4 +113,14 @@ export const HexCoords = {
 
     return { q: q, r: r, s: s };
   },
+
+  /** Round world coordinates to nearest cube coordinates, but return as world coordinates
+   * @param {WorldCoord} w
+   * @param {HexSizeParams} [sizeIn] - Defaults to size from map state
+   * @returns {WorldCoord}
+   * */
+  worldCubeRound(w, sizeIn) {
+    const size = sizeIn ?? globalThis.appState.map.hexes;
+    return HexCoords.cubeToWorld(HexCoords.worldToCube(w, size), size);
+  },
 };

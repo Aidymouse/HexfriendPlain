@@ -19,9 +19,11 @@ export class HexDrawer {
   /**
    * @param {Pick<Tile, 'bgColor' | 'symbol' | 'id'>} tile
    * @param {WorldCoord} pos
-   * @param {HexSizeParams} size
+   * @param {HexSizeParams} [sizeIn]
    */
-  drawTile(tile, pos, size) {
+  drawTile(tile, pos, sizeIn) {
+    const size = sizeIn ?? globalThis.appState.map.hexes;
+
     const f = `#${tile.bgColor.toString(16)}`;
     this.ctx.fillStyle = f;
     drawHex(this.ctx, pos, size);
@@ -57,13 +59,13 @@ export class HexDrawer {
    * @param {HexSizeParams} [sizeIn]
    */
   paintTiles(tiles, sizeIn) {
-    const size = sizeIn ?? globalThis.mapState.hexes;
+    const size = sizeIn ?? globalThis.appState.map.hexes;
     for (const [hexId, tile] of Object.entries(tiles)) {
       if (tile.tile === null) {
         this.drawTile(
           {
             bgColor: Number(
-              globalThis.mapState.hexes.blankColor.replace(/#/g, "0x"),
+              globalThis.appState.map.hexes.blankColor.replace(/#/g, "0x"),
             ),
             symbol: null,
             id: "",

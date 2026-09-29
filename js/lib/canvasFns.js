@@ -1,4 +1,4 @@
-/** import { WorldCoord } from '../types' */
+/** @import { WorldCoord } from "../types" */
 
 /** @param {CanvasRenderingContext2D} [ctxIn]
  * @returns {WorldCoord}

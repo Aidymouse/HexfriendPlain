@@ -12,5 +12,5 @@ export const loadTileset = async (tileset) => {
     }
   }
 
-  globalThis.mapState.loadedTilesets.push(tileset);
+  globalThis.appState.map.loadedTilesets.push(tileset);
 };
