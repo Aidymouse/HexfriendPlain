@@ -5,13 +5,14 @@
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/input.css" />
     <link rel="stylesheet" href="css/panel.css" />
+    <link rel="icon" href="public/favicon.ico" />
     <title>Plain Hexfriend</title>
 
     <script type="module">
-      import { initHexfriend } from './js/main.js'
-      window.addEventListener('load', () => {
-        initHexfriend()
-      })
+      import { initHexfriend } from "./js/main.js";
+      window.addEventListener("load", () => {
+        initHexfriend();
+      });
     </script>
 
     <script></script>
@@ -25,11 +26,13 @@
       <aside id="panel-container">
         <!-- placeholder panel -->
         <section class="panel" id="debug-panel">
-          <button onclick="console.log(globalThis.appState.map)">Log Map</button>
+          <button onclick="console.log(globalThis.appState.map)">
+            Log Map
+          </button>
+          <button onclick="console.log(globalThis.appState)">Log State</button>
         </section>
 
-        <section class="panel" id="terrain-panel">
-        </section>
+        <section class="panel" id="terrain-panel"></section>
       </aside>
     </main>
   </body>

@@ -1,6 +1,6 @@
 import { CoordinateSystem, HexOrientation, HexRaised, Tool } from "./enums";
 import { HexGridParams } from "./hexTypes";
-import { Tile, Tileset } from "./tileTypes";
+import { PlacedTile, Tile, Tileset } from "./tileTypes";
 
 export type MapShapeConfig =
           | {
@@ -57,7 +57,18 @@ export type MapState = {
           loadedTilesets: Tileset[];
 };
 
+
+export type TerrainToolState = {
+  selectedTile: PlacedTile
+}
+
+
 export type AppState = {
-          tool: string;
+          selectedTool: string;
+	  tools: {
+	    terrain: TerrainToolState;
+	  };
           map: MapState;
 };
+
+

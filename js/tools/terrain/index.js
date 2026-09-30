@@ -1,1 +1,2 @@
-export * from './terrainPointerDown.js'
+export * from "./terrainPointerDown.js";
+export * from "./terrainToolFns.js";

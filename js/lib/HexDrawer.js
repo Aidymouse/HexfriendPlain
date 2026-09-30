@@ -56,7 +56,7 @@ export class HexDrawer {
   }
 
   /**
-   * @param {{[k: string]: {q: number, r: number, tile: Tile | null}}} tiles
+   * @param {{[k: string]: {q: number, r: number, tile: PlacedTile | null}}} tiles
    * @param {HexSizeParams} [sizeIn]
    */
   paintTiles(tiles, sizeIn) {
@@ -85,5 +85,5 @@ export class HexDrawer {
     }
   }
 
-  drawHexagon() { }
+  drawHexagon() {}
 }
