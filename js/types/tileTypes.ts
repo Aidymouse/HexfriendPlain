@@ -25,7 +25,7 @@ export type Tileset = {
           version: number;
           collapsed: boolean; // This needs to go in a list of collapsed IDs in the save data somewhere, not in the tileset itself !
           tiles: Tile[];
-          format_version: number; // Internal ID of tileset format.
-          supported_orientations: typeof HexOrientation.FLATTOP | typeof HexOrientation.POINTYTOP | "both";
+          formatVersion: number; // Internal ID of tileset format.
+          supportedOrientations: typeof HexOrientation.FLATTOP | typeof HexOrientation.POINTYTOP | "both";
           //tileset_type: TilesetType
 };
