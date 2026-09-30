@@ -18,12 +18,9 @@ export const initCanvas = () => {
   globalThis.ctx.translate(width / 2, height / 2);
 
   window.addEventListener("resize", fitCanvasToWindow);
-  document
-    .getElementById("main-canvas")
-    .addEventListener("pointermove", canvasPointerMove);
-  document
-    .getElementById("main-canvas")
-    .addEventListener("pointerdown", canvasPointerDown);
+  const eventElement = document.getElementById("main-canvas")
+  eventElement.addEventListener("pointermove", canvasPointerMove);
+  eventElement.addEventListener("pointerdown", canvasPointerDown);
 };
 
 const fitCanvasToWindow = () => {
