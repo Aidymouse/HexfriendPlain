@@ -56,11 +56,14 @@ export const HexCoords = {
   },
 
   /** @param {WorldCoord} w
-   * @param {HexSizeParams} size
+   * @param {HexSizeParams} [sizeIn]
    * @param {boolean} [round=true]
    * @returns {CubeCoord}
    */
-  worldToCube: (w, size, round = true) => {
+  worldToCube: (w, sizeIn, round = true) => {
+
+    const size = sizeIn ?? globalThis.appState.map.hexes
+
     const hexWidth = size.width + (size.gap ?? 0);
     const hexHeight = size.height + (size.gap ?? 0);
 
@@ -123,4 +126,12 @@ export const HexCoords = {
     const size = sizeIn ?? globalThis.appState.map.hexes;
     return HexCoords.cubeToWorld(HexCoords.worldToCube(w, size), size);
   },
+
+  /**
+  * @param {AxialCoord} c
+  * @returns {string}
+  */
+  hexId(c) {
+    return `${c.q}:${c.r}`
+  }
 };

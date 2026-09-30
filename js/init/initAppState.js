@@ -7,7 +7,7 @@ import {
 
 /** @import {MapState} from '../types' */
 
-const initSaveData = () => {};
+const initSaveData = () => { };
 
 export const initAppState = () => {
   globalThis.appState = {

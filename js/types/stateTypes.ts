@@ -53,12 +53,11 @@ export type MapState = {
           coordinates: CoordinatesConfig;
 
           // Tiles
-          tiles: { [hexId: string]: {q: number, r: number, tile: Tile | null} };
+          tiles: { [hexId: string]: { q: number; r: number; tile: PlacedTile | null } };
           loadedTilesets: Tileset[];
 };
 
-
 export type AppState = {
-  tool: string
-  map: MapState
+          tool: string;
+          map: MapState;
 };

@@ -1,6 +1,6 @@
 import { type ScaleMode } from "./enums";
 
-export type IconBase = {
+export type Icon = {
           display: string;
           /* */
           id: string; // Within iconset id
@@ -12,17 +12,19 @@ export type IconBase = {
           texWidth: number;
           texHeight: number;
           rotation: number;
+          scale: RelativeScaleMode | ByDimensionScaleMode;
 };
 
-export type RelativeIcon = IconBase & {
+export type RelativeScaleMode = {
           scaleMode: typeof ScaleMode.RELATIVE;
-          pHex: number; // percent of total hex taken up, where 1 = 100% of hexes shortest dimension
+          /* percent of total hex taken up, where 1 = 100% of hexes shortest dimension */
+          pHex: number;
 };
 
-export type ByDimensionIcon = IconBase & {
+export type ByDimensionScaleMode = {
           scaleMode: typeof ScaleMode.BYDIMENSION;
           pWidth: number;
           pHeight: number;
 };
 
-export type Icon = RelativeIcon | ByDimensionIcon;
+export type PlacedIcon = Pick<Icon, "id" | "texId" | "color" | "rotation" | "scale">;

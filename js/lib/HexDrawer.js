@@ -1,10 +1,10 @@
 import { ScaleMode } from "../types/enums.js";
-import { drawHex } from "./hexDrawing.js";
+import { drawHex } from "./drawingFns.js";
 import { scaleImageToRect } from "./imageSizing.js";
 import { tintImage } from "./imageFns.js";
 import { HexCoords } from "./hexCoords.js";
 
-/** @import {Icon, WorldCoord, HexSizeParams, Tile } from '../types/index' */
+/** @import {Icon, WorldCoord, HexSizeParams, Tile, PlacedTile } from '../types/index' */
 
 export class HexDrawer {
   // @type {CanvasRenderingContext2D}
@@ -17,7 +17,7 @@ export class HexDrawer {
   }
 
   /**
-   * @param {Pick<Tile, 'bgColor' | 'symbol' | 'id'>} tile
+   * @param {PlacedTile} tile
    * @param {WorldCoord} pos
    * @param {HexSizeParams} [sizeIn]
    */
@@ -32,6 +32,7 @@ export class HexDrawer {
       const tex = globalThis.textureStore.getTexture(tile.id);
 
       if (tex) {
+        // TODO: cache the scaled tex for the latest 5 placed tiles
         const texScale = scaleImageToRect(
           tex.width,
           tex.height,
@@ -69,6 +70,7 @@ export class HexDrawer {
             ),
             symbol: null,
             id: "",
+            tileset_id: "",
           },
           HexCoords.axialToWorld({ q: tile.q, r: tile.r }, size),
           size,
@@ -83,5 +85,5 @@ export class HexDrawer {
     }
   }
 
-  drawHexagon() {}
+  drawHexagon() { }
 }
