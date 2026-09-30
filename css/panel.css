@@ -12,4 +12,5 @@
   height: 100px;
   background-color: var(--bg-main);
   pointer-events: all;
+  margin-bottom: var(--gap);
 }

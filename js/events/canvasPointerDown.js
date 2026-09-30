@@ -1,29 +1,19 @@
 import { getTranslation } from "../lib/canvasFns.js";
 import { HexCoords } from "../lib/hexCoords.js";
 import { toPlacedTile } from "../lib/tileFns.js";
+import { terrainPointerDown } from "../tools/terrain/index.js";
+import { Tool } from "../types/enums.js";
 
-/** @import { Tile, WorldCoord } from '../types' */
 
-/** @param {MouseEvent} e
+/** Takes pointer down events from the canvas and passes them on to relevant tool handlers
+ * @param {MouseEvent} e
  */
 export const canvasPointerDown = (e) => {
-  const mouseCoord = { x: e.clientX, y: e.clientY };
-  const worldCoord = HexCoords.screenToWorld(mouseCoord);
-
-  // TODO: make this based on selection
-  const tile = globalThis.appState.map.loadedTilesets[0].tiles[10];
-  console.log(tile)
-  placeTile(tile, worldCoord)
+  switch (globalThis.appState.tool) {
+    case Tool.TERRAIN: {
+      terrainPointerDown(e)
+      break
+    }
+  }
 };
 
-/** Places a tile into map state and draws it
- * @param {Tile} tile
- * @param {WorldCoord} worldCoord
- */
-const placeTile = (tile, worldCoord) => {
-  const hexCoord = HexCoords.worldToCube(worldCoord);
-  const drawCoord = HexCoords.worldCubeRound(worldCoord);
-
-  globalThis.appState.map.tiles[HexCoords.hexId(hexCoord)].tile = toPlacedTile(tile)
-  globalThis.hexDrawer.drawTile(tile, drawCoord);
-}
