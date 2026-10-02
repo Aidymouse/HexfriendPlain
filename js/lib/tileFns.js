@@ -43,12 +43,12 @@ export const tilesMatch = (tile1, tile2) => {
   const tilesetsMatch = tile1.tileset_id === tile2.tileset_id
   const iconMatches = tile1.symbol && tile2.symbol ? iconsMatch(tile1.symbol, tile2.symbol) : true
 
-  console.log({
-    colorMatches,
-    idsMatch,
-    tilesetsMatch,
-    iconMatches,
-  })
+  // console.log({
+  //   colorMatches,
+  //   idsMatch,
+  //   tilesetsMatch,
+  //   iconMatches,
+  // })
 
   return colorMatches && idsMatch && tilesetsMatch && iconMatches
 

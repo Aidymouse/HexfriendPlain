@@ -10,10 +10,10 @@ import { ScaleMode } from '../types/enums.js'
 export const iconsMatch = (icon1, icon2) => {
   const colorMatches = icon1.color === icon2.color
   const scaleMatches = scalesMatch(icon1.scale, icon2.scale)
+  const rotationMatches = icon1.rotation === icon2.rotation
+  const texMatches = icon1.texId === icon2.texId
 
-  console.log({ colorMatches, scaleMatches })
-
-  return colorMatches && scaleMatches
+  return colorMatches && scaleMatches && rotationMatches && texMatches
 }
 
 /**

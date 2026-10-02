@@ -19,7 +19,6 @@ export const placeTile = (tile, worldCoord) => {
   const hexId = HexCoords.hexId(hexCoord);
 
   const match = tilesMatch(tile, getPlacedTile(hexId))
-  console.log(match)
   if (hexExists(hexId) && !match) {
     globalThis.appState.map.tiles[hexId].tile = structuredClone(tile);
     globalThis.hexDrawer.drawTile(tile, drawCoord);
