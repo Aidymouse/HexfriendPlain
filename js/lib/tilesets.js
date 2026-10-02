@@ -1,7 +1,9 @@
 /** @import { Tileset } from '../types' */
 
 /**
+ * TODO: this should probably generate previews, to save on load time
  * @param {Tileset} tileset
+ * 
  */
 export const loadTileset = async (tileset) => {
   // TODO: check for already loaded

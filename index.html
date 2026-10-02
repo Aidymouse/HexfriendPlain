@@ -10,6 +10,7 @@
 
     <script type="module">
       import { initHexfriend } from "./js/main.js";
+
       window.addEventListener("load", () => {
         initHexfriend();
       });
@@ -32,7 +33,9 @@
           <button onclick="console.log(globalThis.appState)">Log State</button>
         </section>
 
-        <section class="panel" id="terrain-panel"></section>
+        <section class="panel" id="terrain-panel-panel">
+					<terrain-panel id="terrain-panel" />
+				</section>
       </aside>
     </main>
   </body>
