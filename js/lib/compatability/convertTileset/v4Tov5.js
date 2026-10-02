@@ -51,7 +51,7 @@ export const convertTilesetv4Tov5 = (tileset) => {
     }
 
     // @ts-expect-error
-    delete newTile.scaleMode
+    delete newTile.symbol.scaleMode
 
     return newTile
   })

@@ -20,9 +20,6 @@ export const initHexfriend = async () => {
   initTranslation()
   initTextureStore()
 
-  const v5 = getLatestTilesetFormat(defaultTileset)
-  console.log(v5)
-
   await loadTileset(defaultTileset)
   initDrawing()
 
