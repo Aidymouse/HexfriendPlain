@@ -27,6 +27,6 @@ export const initHexfriend = async () => {
   initDrawing()
 
   // TODO: draw from save data
-  selectTile(globalThis.appState.map.loadedTilesets[0].tiles[0])
+  selectTile(globalThis.appState.map.loadedTilesets[0].tiles[10])
   globalThis.hexDrawer.paintTiles(globalThis.appState.map.tiles)
 }
