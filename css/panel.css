@@ -9,8 +9,22 @@
 }
 
 .panel {
-  height: 100px;
+  min-height: 100px;
   background-color: var(--bg-main);
   pointer-events: all;
   margin-bottom: var(--gap);
+}
+
+/** TERRAIN PANEL **/
+#terrain-panel-buttons {
+	display: flex;
+	gap: var(--gap-small);
+	padding: var(--gap-small);
+	flex-wrap: wrap;
+	justify-content: space-between; /* hnrggn.... */
+	
+}
+
+#terrain-panel-buttons button {
+	aspect-ratio: 1/1;
 }

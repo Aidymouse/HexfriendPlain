@@ -2,6 +2,7 @@ button {
   background-color: var(--bg-main);
   border: solid 1px transparent;
   box-sizing: border-box;
+	outline: solid 1px var(--bg-light);
 }
 
 button:hover {
